@@ -16,6 +16,7 @@ from samplers import RandomIdentitySampler
 
 # import models
 import models
+from models.osnet import OsNet
 from models.alexnet import AlexNet
 from models.ResNet50 import ResNet50TP
 from models.RL_model import Agent as Agent_QL
@@ -109,6 +110,8 @@ def init_model(args, num_train_pids):
         model = ResNet50TP(num_classes=num_train_pids)
     elif args.arch.lower() =='alexnet':
         model = AlexNet(num_classes=num_train_pids)
+    elif args.arch.lower() =='osnet':
+        model =OsNet(num_classes=num_train_pids)
     else:
         assert False, 'unknown model ' + args.arch
 

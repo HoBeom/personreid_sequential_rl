@@ -93,7 +93,7 @@ def get_currenttime_prefix():
     '''
 
     from time import localtime, strftime
-    return strftime("%d-%b-%Y_%H:%M:%S", localtime()) 
+    return strftime("%d_%b_%Y_%H%M%S", localtime()) 
 
 def get_learnable_params(model):
     '''to get the list of learnable params

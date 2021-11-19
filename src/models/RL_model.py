@@ -457,7 +457,7 @@ class Agent(nn.Module):
             # update the model
             currentQ = self.brain(current_states)
             self.optimizer.zero_grad()
-            loss = torch.mean((target_Q - currentQ.gather(1, actions))**2)
+            loss = torch.mean((target_Q - currentQ.gather(1, actions.type(torch.int64)))**2)
             total_loss += loss.item()
             loss.backward()
             self.optimizer.step()

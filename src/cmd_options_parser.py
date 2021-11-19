@@ -62,10 +62,10 @@ def stage2_parse_cmd_options():
                         choices=data_manager.get_names())
     parser.add_argument('-j', '--workers', default=0, type=int,
                         help="number of data loading workers (default: 4)")
-    parser.add_argument('--height', type=int, default=224,
-                        help="height of an image (default: 224)")
-    parser.add_argument('--width', type=int, default=112,
-                        help="width of an image (default: 112)")
+    parser.add_argument('--height', type=int, default=256,#224,
+                        help="height of an image (default: 256)")
+    parser.add_argument('--width', type=int, default=128,#112,
+                        help="width of an image (default: 128)")
     parser.add_argument('--seq-len', type=int, default=4, help="number of images to sample in a tracklet")
     parser.add_argument('--rl-seq-len', type=int, default=8, help="number of images to sample in a tracklet")
     parser.add_argument('--test-num-tracks', type=int, default=16, help="number of tracklets to pass to GPU during test (to avoid OOM error)")
@@ -83,7 +83,7 @@ def stage2_parse_cmd_options():
     parser.add_argument('--num-instances', type=int, default=4, help="number of instances per identity")
     
     # Architecture
-    parser.add_argument('-a', '--arch', type=str, default='alexnet', help="resnet50, alexnet")
+    parser.add_argument('-a', '--arch', type=str, default='osnet', help="osnet, resnet50, alexnet")
     parser.add_argument('--rp', type=float, default=0.2, help="reward per step")
 
     # Miscs
@@ -94,7 +94,7 @@ def stage2_parse_cmd_options():
     parser.add_argument('--pretrained-model', type=str, default=None, help='need to be set for loading pretrained models')
     parser.add_argument('--pretrained-model-rl', type=str, default=None, help='need to be set for loading pretrained rl models')
     parser.add_argument('--evaluate', action='store_true', help="evaluation only")
-    parser.add_argument('--save-step', type=int, default=50, help="save model for every N epochs (set to -1 to test after training)")
+    parser.add_argument('--save-step', type=int, default=-1, help="save model for every N epochs (set to -1 to test after training)")
     parser.add_argument('--save-dir', type=str, default='multishot-rl')
     parser.add_argument('--use-cpu', action='store_true', help="use cpu")
     parser.add_argument('--gpu-devices', default='0', type=str, help='gpu device ids for CUDA_VISIBLE_DEVICES')
