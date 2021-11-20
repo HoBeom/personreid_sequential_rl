@@ -94,7 +94,7 @@ def stage2_parse_cmd_options():
     parser.add_argument('--pretrained-model', type=str, default=None, help='need to be set for loading pretrained models')
     parser.add_argument('--pretrained-model-rl', type=str, default=None, help='need to be set for loading pretrained rl models')
     parser.add_argument('--evaluate', action='store_true', help="evaluation only")
-    parser.add_argument('--save-step', type=int, default=-1, help="save model for every N epochs (set to -1 to test after training)")
+    parser.add_argument('--save-step', type=int, default=30, help="save model for every N epochs (set to -1 to test after training)")
     parser.add_argument('--save-dir', type=str, default='multishot-rl')
     parser.add_argument('--use-cpu', action='store_true', help="use cpu")
     parser.add_argument('--gpu-devices', default='0', type=str, help='gpu device ids for CUDA_VISIBLE_DEVICES')

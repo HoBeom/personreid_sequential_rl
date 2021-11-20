@@ -13,7 +13,7 @@ class OsNet(nn.Module):
         
         self.base = FeatureExtractor(
             'osnet_x1_0',
-            model_path='../data/trained_model/osnet_x1_0_duke_market_trained.pth.tar-250',
+            model_path='../data/trained_model/osnet_x1_0_market_trained.pth.tar-250',
         )
         # feature extractor
         self.feat_dim = 512

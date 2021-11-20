@@ -563,7 +563,7 @@ class Agent(nn.Module):
         m, n = qmeanf.size(0), gmeanf.size(0)
         distmat = torch.pow(qmeanf, 2).sum(dim=1, keepdim=True).expand(m, n) + \
                 torch.pow(gmeanf, 2).sum(dim=1, keepdim=True).expand(n, m).t()
-        distmat.addmm_(1, -2, qmeanf, gmeanf.t())
+        distmat.addmm_(qmeanf, gmeanf.t(), beta=1, alpha=-2)
         distmat = distmat.numpy()
         print("Computing CMC and mAP")
         cmc, mAP = evaluate(distmat, q_pids, g_pids, q_camids, g_camids)
